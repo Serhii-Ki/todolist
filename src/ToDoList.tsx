@@ -1,3 +1,8 @@
+import { AddTaskForm } from './AddTaskForm';
+import { Button } from './Button';
+import { Task } from './Task';
+import { ToDoListHeader } from './ToDoListHeader';
+
 type TaskType = {
 	id: number;
 	title: string;
@@ -9,33 +14,21 @@ type PropsType = {
 	tasks: Array<TaskType>;
 };
 
-function ToDoList(props: PropsType) {
+function ToDoList({ tasks, title }: PropsType) {
 	return (
 		<div>
 			<div>
-				<h3>{props.title}</h3>
-				<div>
-					<input />
-					<button>+</button>
-				</div>
+				<ToDoListHeader title={title} />
+				<AddTaskForm />
 				<ul>
-					<li>
-						<input type='checkbox' checked={props.tasks[0].isDone} />{' '}
-						<span>{props.tasks[0].title}</span>
-					</li>
-					<li>
-						<input type='checkbox' checked={props.tasks[1].isDone} />{' '}
-						<span>{props.tasks[1].title}</span>
-					</li>
-					<li>
-						<input type='checkbox' checked={props.tasks[2].isDone} />{' '}
-						<span>{props.tasks[2].title}</span>
-					</li>
+					{tasks.map(task => (
+						<Task title={task.title} isDone={task.isDone} />
+					))}
 				</ul>
 				<div>
-					<button>All</button>
-					<button>Active</button>
-					<button>Completed</button>
+					<Button title='All' />
+					<Button title='Active' />
+					<Button title='Completed' />
 				</div>
 			</div>
 		</div>
