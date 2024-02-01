@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { AddTaskForm } from './AddTaskForm';
 import { Button } from './Button';
 import { Task, TaskPropsType } from './Task';
@@ -11,33 +11,38 @@ type PropsType = {
 
 function ToDoList({ tasks, title }: PropsType) {
 	const [renderTasks, setRenderTasks] = useState(tasks);
+	const [filter, setFilter] = useState('all');
 
-	function removeTask(id: number) {
-		let filteredTasks = tasks.filter(task => task.id !== id);
+	const removeTask = (id: string) => {
+		let filteredTasks = renderTasks.filter(task => task.id !== id);
 		setRenderTasks(filteredTasks);
-	}
+	};
 
-	function filterTasks(filterTitle: string) {
-		if (filterTitle === 'active') {
-			const tasksForTodoList = tasks.filter(task => !task.isDone);
-			setRenderTasks(tasksForTodoList);
+	const filterTasks = (filterTitle: string) => {
+		setFilter(filterTitle);
+	};
+
+	const renderTasksElement = useCallback(() => {
+		if (filter === 'active') {
+			return renderTasks.filter(task => !task.isDone);
 		}
-		if (filterTitle === 'completed') {
-			const tasksForTodoList = tasks.filter(task => task.isDone);
-			setRenderTasks(tasksForTodoList);
+		if (filter === 'completed') {
+			return renderTasks.filter(task => task.isDone);
 		}
-		if (filterTitle === 'all') {
-			setRenderTasks(tasks);
-		}
-	}
+		return renderTasks;
+	}, [filter, renderTasks]);
+
+	useEffect(() => {
+		renderTasksElement();
+	}, [filter, renderTasksElement]);
 
 	return (
 		<div>
 			<div>
 				<ToDoListHeader title={title} />
-				<AddTaskForm />
+				<AddTaskForm setRenderTasks={setRenderTasks} />
 				<ul>
-					{renderTasks.map(task => (
+					{renderTasksElement().map(task => (
 						<Task
 							key={task.id}
 							title={task.title}
