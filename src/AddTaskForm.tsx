@@ -1,37 +1,27 @@
-import { Dispatch, SetStateAction, useState } from 'react';
-import { v1 } from 'uuid';
+import { ChangeEvent, useState } from 'react';
 
 import { Button } from './Button';
-import { TaskPropsType } from './Task';
 
-type TasksPropsType = {
-	setRenderTasks: Dispatch<SetStateAction<TaskPropsType[]>>;
+type AddTasksPropsType = {
+	addNewTask: (newTask: string) => void;
 };
 
-export function AddTaskForm({ setRenderTasks }: TasksPropsType) {
-	const [newTask, setNewTask] = useState<TaskPropsType>({
-		id: v1(),
-		title: '',
-		isDone: false,
-	});
+export function AddTaskForm({ addNewTask }: AddTasksPropsType) {
+	const [newTask, setNewTask] = useState<string>('');
 
-	const setInputTask = (e: React.ChangeEvent<HTMLInputElement>) => {
-		setNewTask({
-			...newTask,
-			title: e.target.value,
-		});
+	const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
+		setNewTask(e.currentTarget.value);
 	};
 
-	const addNewTask = () => {
-		if (newTask.title) {
-			setRenderTasks((prevTasks: TaskPropsType[]) => [...prevTasks, newTask]);
-		}
+	const addInputForm = () => {
+		addNewTask(newTask);
+		setNewTask('');
 	};
 
 	return (
 		<div>
-			<input value={newTask.title} onChange={e => setInputTask(e)} />
-			<Button title='+' onClick={addNewTask} />
+			<input value={newTask} onChange={onChangeHandler} />
+			<Button title='+' onClick={addInputForm} />
 		</div>
 	);
 }
