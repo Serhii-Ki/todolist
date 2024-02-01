@@ -1,4 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
+import { v1 } from 'uuid';
+
 import { AddTaskForm } from './AddTaskForm';
 import { Button } from './Button';
 import { Task, TaskPropsType } from './Task';
@@ -10,12 +12,25 @@ type PropsType = {
 };
 
 function ToDoList({ tasks, title }: PropsType) {
-	const [renderTasks, setRenderTasks] = useState(tasks);
-	const [filter, setFilter] = useState('all');
+	const [renderTasks, setRenderTasks] = useState<Array<TaskPropsType>>(tasks);
+	const [filter, setFilter] = useState<string>('all');
 
 	const removeTask = (id: string) => {
 		let filteredTasks = renderTasks.filter(task => task.id !== id);
 		setRenderTasks(filteredTasks);
+	};
+
+	const addNewTask = (newTask: string) => {
+		if (newTask) {
+			setRenderTasks([
+				...renderTasks,
+				{
+					id: v1(),
+					title: newTask,
+					isDone: false,
+				},
+			]);
+		}
 	};
 
 	const filterTasks = (filterTitle: string) => {
@@ -40,7 +55,7 @@ function ToDoList({ tasks, title }: PropsType) {
 		<div>
 			<div>
 				<ToDoListHeader title={title} />
-				<AddTaskForm setRenderTasks={setRenderTasks} />
+				<AddTaskForm addNewTask={addNewTask} />
 				<ul>
 					{renderTasksElement().map(task => (
 						<Task
