@@ -11,9 +11,11 @@ type PropsType = {
 	tasks: Array<TaskPropsType>;
 };
 
+type FilterValuesType = 'all' | 'active' | 'completed';
+
 function ToDoList({ tasks, title }: PropsType) {
 	const [renderTasks, setRenderTasks] = useState<Array<TaskPropsType>>(tasks);
-	const [filter, setFilter] = useState<string>('all');
+	const [filter, setFilter] = useState<FilterValuesType>('all');
 
 	const removeTask = (id: string) => {
 		let filteredTasks = renderTasks.filter(task => task.id !== id);
@@ -33,7 +35,7 @@ function ToDoList({ tasks, title }: PropsType) {
 		}
 	};
 
-	const filterTasks = (filterTitle: string) => {
+	const filterTasks = (filterTitle: FilterValuesType) => {
 		setFilter(filterTitle);
 	};
 
