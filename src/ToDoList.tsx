@@ -22,6 +22,14 @@ function ToDoList({ tasks, title }: PropsType) {
 		setRenderTasks(filteredTasks);
 	};
 
+	const isCheckedHandler = (id: string) => {
+		setRenderTasks(prevTasks =>
+			prevTasks.map(task =>
+				task.id === id ? { ...task, isDone: !task.isDone } : task
+			)
+		);
+	};
+
 	const addNewTask = (newTask: string) => {
 		if (newTask) {
 			setRenderTasks([
@@ -66,6 +74,7 @@ function ToDoList({ tasks, title }: PropsType) {
 							isDone={task.isDone}
 							id={task.id}
 							removeTask={removeTask}
+							isCheckedHandler={isCheckedHandler}
 						/>
 					))}
 				</ul>
