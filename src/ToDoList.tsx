@@ -79,9 +79,21 @@ function ToDoList({ tasks, title }: PropsType) {
 					))}
 				</ul>
 				<div>
-					<Button title='All' onClick={() => filterTasks('all')} />
-					<Button title='Active' onClick={() => filterTasks('active')} />
-					<Button title='Completed' onClick={() => filterTasks('completed')} />
+					<Button
+						className={filter === 'all' ? 'active-btn' : ''}
+						title='All'
+						onClick={() => filterTasks('all')}
+					/>
+					<Button
+						className={filter === 'active' ? 'active-btn' : ''}
+						title='Active'
+						onClick={() => filterTasks('active')}
+					/>
+					<Button
+						className={filter === 'completed' ? 'active-btn' : ''}
+						title='Completed'
+						onClick={() => filterTasks('completed')}
+					/>
 				</div>
 			</div>
 		</div>

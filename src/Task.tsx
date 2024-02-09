@@ -16,7 +16,7 @@ export function Task({
 	isCheckedHandler,
 }: TaskPropsType) {
 	return (
-		<li>
+		<li className={isDone ? 'task-done' : ''}>
 			<input
 				type='checkbox'
 				checked={isDone}

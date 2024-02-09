@@ -1,8 +1,22 @@
 .App {
-  padding: 30px;
-  display: flex;
+	padding: 30px;
+	display: flex;
 }
 
 .App > div {
-  margin-right: 50px;
+	margin-right: 50px;
+}
+
+button {
+	border: none;
+	padding: 5px 10px;
+	border: 1px solid black;
+}
+
+.task-done {
+	opacity: 0.3;
+}
+
+.active-btn {
+	background-color: aqua;
 }
