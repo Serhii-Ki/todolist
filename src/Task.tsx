@@ -1,12 +1,10 @@
+import { TasksType } from './App';
 import { Button } from './Button';
 
 export type TaskPropsType = {
-	title: string;
-	isDone: boolean;
-	id: string;
 	removeTask?: (id: string) => void;
 	isCheckedHandler?: (id: string) => void;
-};
+} & TasksType;
 
 export function Task({
 	title,
