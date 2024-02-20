@@ -30,6 +30,17 @@ function ToDoList({ tasks, title }: PropsType) {
 		);
 	};
 
+	const changeTaskTitle = (id: string, newTitle: string) => {
+		if (newTitle) {
+			setRenderTasks(prevTask =>
+				prevTask.map(task =>
+					task.id === id ? { ...task, title: newTitle } : task
+				)
+			);
+		}
+		return;
+	};
+
 	const addNewTask = (newTask: string) => {
 		if (newTask) {
 			setRenderTasks([
@@ -75,6 +86,7 @@ function ToDoList({ tasks, title }: PropsType) {
 							id={task.id}
 							removeTask={removeTask}
 							isCheckedHandler={isCheckedHandler}
+							changeTaskTitle={changeTaskTitle}
 						/>
 					))}
 				</ul>
