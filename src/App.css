@@ -11,12 +11,26 @@ button {
 	border: none;
 	padding: 5px 10px;
 	border: 1px solid black;
+	margin-left: 10px;
 }
 
 .task-done {
 	opacity: 0.3;
+	text-decoration: line-through;
 }
 
 .active-btn {
 	background-color: aqua;
+}
+
+.input-non {
+	display: none;
+}
+
+.confirm-none {
+	display: none;
+}
+
+.edit-none {
+	display: none;
 }
