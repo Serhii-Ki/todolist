@@ -1,15 +1,16 @@
-import { TextField } from '@mui/material';
+import { TextField, TextFieldProps } from '@mui/material';
 
 type CustomInputPropsType = {
-	label?: string;
-};
+	placeholder?: string;
+} & TextFieldProps;
 
 function CustomInput(props: CustomInputPropsType) {
 	return (
 		<TextField
 			id='outlined-basic'
-			label={props.label || ''}
+			placeholder={props.placeholder || ''}
 			variant='outlined'
+			size='small'
 		/>
 	);
 }

@@ -1,0 +1,10 @@
+.tasks-wrap {
+	display: flex;
+	flex-direction: column;
+}
+
+.btn-wrap {
+	display: flex;
+	column-gap: 10px;
+	margin-top: 20px;
+}

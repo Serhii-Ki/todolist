@@ -1,0 +1,13 @@
+.main-wrap {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding-top: 50px;
+}
+
+.todo-wrap {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 40px;
+	margin-top: 50px;
+}
