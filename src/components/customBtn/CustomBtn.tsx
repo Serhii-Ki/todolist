@@ -1,15 +1,15 @@
-import { Button } from '@mui/material';
+import { Button, ButtonProps } from '@mui/material';
 
 import styles from './customBtn.module.css';
 
 type BtnPropsType = {
 	title: string;
 	onClick: () => void;
-};
+} & ButtonProps;
 
 function CustomBtn(props: BtnPropsType) {
 	return (
-		<Button onClick={props.onClick} variant='text' className={styles.btn}>
+		<Button {...props} onClick={props.onClick} className={styles.btn}>
 			{props.title}
 		</Button>
 	);
