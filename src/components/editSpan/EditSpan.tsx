@@ -10,6 +10,7 @@ type EditSpanPropsType = {
 
 function EditSpan(props: EditSpanPropsType) {
 	const [viewMode, setViewMode] = useState<ModeType>('span');
+	const [inputValue, setInputValue] = useState('');
 
 	const setViewSpan = () => {
 		setViewMode('span');
@@ -25,7 +26,7 @@ function EditSpan(props: EditSpanPropsType) {
 				<span onDoubleClick={setInputMode}>{props.title}</span>
 			) : (
 				<div>
-					<CustomInput />
+					<CustomInput setInputValue={setInputValue} inputValue={inputValue} />
 					<CustomBtn title='cancel' onClick={() => {}} />
 					<CustomBtn title='confirm' onClick={() => {}} />
 				</div>
