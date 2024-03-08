@@ -8,8 +8,11 @@ type BtnPropsType = {
 } & ButtonProps;
 
 function CustomBtn(props: BtnPropsType) {
+	const onClickHandler = () => {
+		props.onClick();
+	};
 	return (
-		<Button {...props} onClick={props.onClick} className={styles.btn}>
+		<Button {...props} onClick={onClickHandler} className={styles.btn}>
 			{props.title}
 		</Button>
 	);

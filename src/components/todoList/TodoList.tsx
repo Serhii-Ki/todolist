@@ -9,13 +9,17 @@ type TodoPropsType = {
 	tasks: TaskType[];
 	todoListId: string;
 	title: string;
+	addTask: (todoId: string, title: string) => void;
 };
 
 function TodoList(props: TodoPropsType) {
+	const addTask = (title: string) => {
+		props.addTask(props.todoListId, title);
+	};
 	return (
 		<div>
 			<h2>{props.title}</h2>
-			<AddForm placeholder='enter your task' />
+			<AddForm addItem={addTask} placeholder='enter your task' />
 			<div className={styles['btn-wrap']}>
 				<CustomBtn variant='contained' title='all' onClick={() => {}} />
 				<CustomBtn variant='contained' title='active' onClick={() => {}} />

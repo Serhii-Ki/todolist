@@ -86,11 +86,31 @@ function Main() {
 	const [todoList, setTodoList] = useState<TodoListType[]>(todoLists);
 	const [task, setTask] = useState<TasksType>(tasks);
 
+	const addTask = (todoListID: string, title: string) => {
+		const newTask: TaskType = {
+			id: v1(),
+			title: title,
+			isDone: false,
+		};
+
+		setTask({ ...task, [todoListID]: [...task[todoListID], newTask] });
+	};
+
+	const addTodoList = (title: string) => {
+		const newTodoLIst: TodoListType = {
+			id: v1(),
+			title: title,
+			filter: 'all',
+		};
+		setTodoList([...todoList, newTodoLIst]);
+		setTask({ ...task, [newTodoLIst.id]: [] });
+	};
+
 	return (
 		<Container>
 			<div className={styles['main-wrap']}>
 				<h2>Add new todo list</h2>
-				<AddForm placeholder='enter your todo' />
+				<AddForm addItem={addTodoList} placeholder='enter your todo' />
 				<div className={styles['todo-wrap']}>
 					{todoList.map(el => {
 						return (
@@ -99,6 +119,7 @@ function Main() {
 								todoListId={el.id}
 								tasks={task[el.id]}
 								title={el.title}
+								addTask={addTask}
 							/>
 						);
 					})}
