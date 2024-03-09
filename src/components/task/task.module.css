@@ -1,2 +1,4 @@
 .task-wrap {
+	display: flex;
+	align-items: center;
 }
