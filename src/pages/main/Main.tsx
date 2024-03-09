@@ -6,7 +6,7 @@ import TodoList from '../../components/todoList/TodoList';
 
 import styles from './main.module.css';
 
-type FilterType = 'all';
+export type FilterType = 'all' | 'active' | 'completed';
 
 type TodoListType = {
 	id: string;
@@ -106,6 +106,44 @@ function Main() {
 		setTask({ ...task, [newTodoLIst.id]: [] });
 	};
 
+	const changeChecked = (todoId: string, taskId: string) => {
+		setTask({
+			...task,
+			[todoId]: task[todoId].map(el =>
+				el.id === taskId ? { ...el, isDone: !el.isDone } : el
+			),
+		});
+	};
+
+	const changeFilter = (todoId: string, filter: FilterType) => {
+		setTodoList(
+			todoList.map(el => (el.id === todoId ? { ...el, filter: filter } : el))
+		);
+	};
+
+	const deleteTodo = (todoId: string) => {
+		setTodoList(todoList.filter(el => el.id !== todoId));
+	};
+
+	const deleteTask = (todoId: string, taskId: string) => {
+		setTask({ ...task, [todoId]: task[todoId].filter(el => el.id !== taskId) });
+	};
+
+	const editTask = (todoId: string, taskId: string, title: string) => {
+		setTask({
+			...task,
+			[todoId]: task[todoId].map(el =>
+				el.id === taskId ? { ...el, title: title } : el
+			),
+		});
+	};
+
+	const editTodo = (todoId: string, title: string) => {
+		setTodoList(
+			todoList.map(el => (el.id === todoId ? { ...el, title: title } : el))
+		);
+	};
+
 	return (
 		<Container>
 			<div className={styles['main-wrap']}>
@@ -119,7 +157,14 @@ function Main() {
 								todoListId={el.id}
 								tasks={task[el.id]}
 								title={el.title}
+								filter={el.filter}
 								addTask={addTask}
+								changeChecked={changeChecked}
+								changeFilter={changeFilter}
+								deleteTodo={deleteTodo}
+								deleteTask={deleteTask}
+								editTask={editTask}
+								editTodo={editTodo}
 							/>
 						);
 					})}
