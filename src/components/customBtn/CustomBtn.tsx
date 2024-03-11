@@ -2,7 +2,7 @@ import { Button, ButtonProps } from '@mui/material';
 
 import styles from './customBtn.module.css';
 
-type BtnPropsType = {
+export type BtnPropsType = {
 	title: string;
 	color?: string;
 	onClick: () => void;
