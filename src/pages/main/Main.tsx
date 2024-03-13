@@ -8,7 +8,7 @@ import styles from './main.module.css';
 
 export type FilterType = 'all' | 'active' | 'completed';
 
-type TodoListType = {
+export type TodoListType = {
 	id: string;
 	title: string;
 	filter: FilterType;
