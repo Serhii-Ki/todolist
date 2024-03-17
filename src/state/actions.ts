@@ -92,9 +92,9 @@ export const editTodoAC = (todoId: string, title: string) => {
   } as const;
 };
 
-type EditTaskType = ReturnType<typeof editTask>;
+type EditTaskType = ReturnType<typeof editTaskAC>;
 
-export const editTask = (todoId: string, taskId: string, title: string) => {
+export const editTaskAC = (todoId: string, taskId: string, title: string) => {
   return {
     type: "EDIT-TASK",
     payload: {
