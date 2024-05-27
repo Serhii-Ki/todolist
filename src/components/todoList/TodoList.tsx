@@ -3,6 +3,7 @@ import Box from "@mui/material/Box";
 import AddItemForm from "../addItemForm/AddItemForm";
 import CustomBtn from "../customBtn/CustomBtn";
 import EditSpan from "../editSpan/EditSpan";
+import Task from "../task/Task";
 
 
 function TodoList(props) {
@@ -10,7 +11,10 @@ function TodoList(props) {
     <Paper sx={{ p: '20px' }}>
       <Box display='flex' flexDirection='column' gap='20px'>
         <EditSpan type='todoList' title='My Todo'/>
-        <AddItemForm inputLabel='task'/>
+        <AddItemForm inputLabel='add task'/>
+        <Task/>
+        <Task/>
+        <Task/>
         <Box display='flex' gap='15px'>
           <CustomBtn title='all'/>
           <CustomBtn title='active'/>
