@@ -6,8 +6,9 @@ import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 
 type EditSpanPropsType = {
-  type: 'todoList' | 'task';
-  title: string;
+  type: 'todoList' | 'task'
+  title: string
+  completed?: boolean
 }
 
 
@@ -17,8 +18,8 @@ function EditSpan(props: EditSpanPropsType) {
     return (
         <Box display='flex' justifyContent='space-between' alignItems='center'>
           <Box display='flex' gap='5px' alignItems='center'>
-            {props.type === 'task' && <Checkbox />}
-            <Typography variant={props.type === 'task' ? "overline" : "h4"} display="block">
+            {props.type === 'task' && <Checkbox checked={props.completed}/>}
+            <Typography variant={props.type === 'task' ? "subtitle1" : "h4"} display="block">
               {props.title}
             </Typography>
           </Box>
