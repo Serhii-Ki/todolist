@@ -9,6 +9,7 @@ type EditSpanPropsType = {
   type: 'todoList' | 'task'
   title: string
   completed?: boolean
+  removeItem: () => void
 }
 
 
@@ -27,7 +28,7 @@ function EditSpan(props: EditSpanPropsType) {
             <IconButton aria-label="edit">
               <EditIcon />
             </IconButton>
-            <IconButton aria-label="delete">
+            <IconButton aria-label="delete" onClick={props.removeItem}>
               <DeleteIcon />
             </IconButton>
           </Box>

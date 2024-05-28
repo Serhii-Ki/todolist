@@ -5,13 +5,16 @@ import CustomInput from "../customInput/CustomInput";
 
 type AddItemFormPropsType = {
   inputLabel: string
+  value: string
+  addItem: () => void
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
 
 function AddItemForm(props: AddItemFormPropsType) {
   return (
       <Box display="flex" alignItems="center" gap={2}>
-        <CustomInput label={props.inputLabel}/>
-        <IconButton aria-label="add">
+        <CustomInput label={props.inputLabel} value={props.value} onChange={props.onChange}/>
+        <IconButton aria-label="add" onClick={props.addItem}>
           <AddIcon />
         </IconButton>
       </Box>

@@ -6,7 +6,7 @@ type ButtonPropsType = {
 
 function CustomBtn(props: ButtonPropsType) {
   return (
-      <Button variant="contained">{props.title}</Button>
+      <Button variant="contained" {...props}>{props.title}</Button>
   );
 }
 
