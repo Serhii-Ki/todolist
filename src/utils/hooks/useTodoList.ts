@@ -1,6 +1,6 @@
 import {useDispatch} from "react-redux";
 import { v4 as uuidv4 } from 'uuid';
-import {AddTodoListAC, ChangeFilterAC, RemoveTodoListAC} from "../../store/todolist-actions";
+import {AddTodoListAC, ChangeFilterAC, EditTodoTitleAC, RemoveTodoListAC} from "../../store/todolist-actions";
 import {UpdateTaskAC} from "../../store/task-actions";
 import {FilterType} from "../types";
 
@@ -21,10 +21,15 @@ function useTodoList() {
     dispatch(ChangeFilterAC(todoId, filter))
   }
 
+  const editTodoList = (todoId: string, title: string) => {
+    dispatch(EditTodoTitleAC(todoId, title))
+  }
+
   return {
     addTodoList,
     removeTodoList,
-    changeFilter
+    changeFilter,
+    editTodoList
   }
 }
 

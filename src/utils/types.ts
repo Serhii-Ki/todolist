@@ -15,3 +15,5 @@ export type TodoListType = {
   title: string
   filter: FilterType
 }
+
+export type ViewModeType = 'span' | 'input';

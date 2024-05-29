@@ -1,3 +1,4 @@
+import {useMemo} from "react";
 import {useSelector} from "react-redux";
 import Paper from '@mui/material/Paper';
 import Box from "@mui/material/Box";
@@ -7,8 +8,8 @@ import EditSpan from "../editSpan/EditSpan";
 import Task from "../task/Task";
 import {RootStateType} from "../../store/store";
 import {FilterType, TasksType, TaskType} from "../../utils/types";
-import {useMemo} from "react";
 import useTodoList from "../../utils/hooks/useTodoList";
+import useTask from "../../utils/hooks/useTask";
 
 type TodoListPropsType = {
   todoId: string
@@ -18,7 +19,13 @@ type TodoListPropsType = {
 
 function TodoList(props: TodoListPropsType) {
   const tasks = useSelector<RootStateType, TasksType>(state => state.tasks);
-  const {removeTodoList, changeFilter} = useTodoList()
+  const {
+    removeTodoList,
+    changeFilter,
+    editTodoList
+  } = useTodoList();
+
+  const { addTask } = useTask();
 
   const filteredTasks: TaskType[] = useMemo((): TaskType[] => {
     if(props.filter === 'active') {
@@ -27,7 +34,7 @@ function TodoList(props: TodoListPropsType) {
       return tasks[props.todoId].filter(task => task.completed)
     }
       return tasks[props.todoId]
-  }, [props.filter]);
+  }, [props.filter, tasks]);
 
   const onRemoveTodoList = () => {
     removeTodoList(props.todoId)
@@ -37,6 +44,14 @@ function TodoList(props: TodoListPropsType) {
     changeFilter(props.todoId, filter)
   }
 
+  const setNewTitleTodoList = (title: string) => {
+    editTodoList(props.todoId, title);
+  }
+
+  const addNewTask = (title: string) => {
+    addTask(props.todoId, title)
+  }
+
   return (
     <Paper sx={{ p: '20px' }}>
       <Box display='flex' flexDirection='column' gap='20px'>
@@ -44,16 +59,17 @@ function TodoList(props: TodoListPropsType) {
             type='todoList'
             title={props.title}
             removeItem={onRemoveTodoList}
+            setNewTitle={setNewTitleTodoList}
         />
         <AddItemForm
             inputLabel='add task'
-            value=''
-            onChange={() => {}}
-            addItem={() => {}}
+            addItem={addNewTask}
         />
         {filteredTasks.map(task =>
             <Task
               key={task.id}
+              taskId={task.id}
+              todoId={props.todoId}
               title={task.title}
               completed={task.completed}
             />
