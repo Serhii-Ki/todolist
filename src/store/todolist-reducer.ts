@@ -10,6 +10,7 @@ export const todolistReducer = (state: TodoListType[] = todoListInitial, action:
         {
           id: action.payload.todoId,
           title: action.payload.title,
+          date: new Date(),
           filter: 'all'
         }
       ];

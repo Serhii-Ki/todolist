@@ -2,6 +2,7 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import AddItemForm from "../../components/addItemForm/AddItemForm";
 import useTodoList from "../../utils/hooks/useTodoList";
+import TodoListTable from "../../components/todoListTable/TodoListTable";
 
 
 function AddNewTodoList() {
@@ -21,6 +22,7 @@ function AddNewTodoList() {
             inputLabel='todo list'
             addItem={addNewTodoList}
         />
+        <TodoListTable/>
       </Box>
   );
 }

@@ -29,10 +29,10 @@ function App() {
             <CssBaseline />
             <Header changeModeHandler={changeModeHandler}/>
             <Grid container spacing={2}>
-              <Grid item xs={2}>
+              <Grid item lg={2} sm={4}>
                 <Sidebar/>
               </Grid>
-              <Grid item xs={9} mt={'30px'} direction="column" justifyContent="center" alignItems="center">
+              <Grid item lg={8} sm={6} mt={'30px'} direction="column" justifyContent="center" alignItems="center">
                 <Outlet/>
               </Grid>
             </Grid>

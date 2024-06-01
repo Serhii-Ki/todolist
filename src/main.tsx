@@ -7,6 +7,8 @@ import TodoListsPage from "./pages/todoListsPage/TodoListsPage";
 import AddNewTodoList from "./pages/addTodoListPage/AddNewTodoList";
 
 import './index.css'
+import TodoList from "./components/todoList/TodoList";
+import SingleTodoList from "./components/singleTodoList/SingleTodoList";
 
 const router = createBrowserRouter([
   {
@@ -14,12 +16,16 @@ const router = createBrowserRouter([
     element: <App/>,
     children: [
       {
-        path: '/addtodo',
+        path: 'addtodo',
         element: <AddNewTodoList/>
       },
       {
         path: 'todolists',
         element: <TodoListsPage/>
+      },
+      {
+        path: 'addtodo/:id',
+        element: <SingleTodoList/>
       }
     ]
   },

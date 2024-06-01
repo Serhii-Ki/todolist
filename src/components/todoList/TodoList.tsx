@@ -53,7 +53,7 @@ function TodoList(props: TodoListPropsType) {
   }
 
   return (
-    <Paper sx={{ p: '20px' }}>
+    <Paper sx={{ p: '35px' }}>
       <Box display='flex' flexDirection='column' gap='20px'>
         <EditSpan
             type='todoList'

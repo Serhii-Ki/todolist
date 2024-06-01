@@ -8,11 +8,13 @@ export const todoListInitial: TodoListType[] = [
   {
     id: firstId,
     title: 'What to learn',
+    date: new Date('2024-05-25'),
     filter: 'all'
   },
   {
     id: secondId,
     title: 'What to buy',
+    date: new Date('2024-05-29'),
     filter: 'all'
   },
 ];
