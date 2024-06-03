@@ -1,10 +1,10 @@
 import {useState} from "react";
+import {Outlet} from "react-router-dom";
 import {createTheme, ThemeProvider} from "@mui/material";
 import Grid from '@mui/material/Grid';
 import CssBaseline from '@mui/material/CssBaseline'
 import Header from "./components/header/header";
 import Sidebar from "./components/sidebar/Sidebar";
-import {Outlet} from "react-router-dom";
 
 type ThemeModeType = 'light' | 'dark'
 

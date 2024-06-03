@@ -1,6 +1,6 @@
-import TodoList from "../../components/todoList/TodoList";
-import Box from "@mui/material/Box";
 import {useSelector} from "react-redux";
+import Box from "@mui/material/Box";
+import TodoList from "../../components/todoList/TodoList";
 import {RootStateType} from "../../store/store";
 import {TodoListType} from "../../utils/types";
 

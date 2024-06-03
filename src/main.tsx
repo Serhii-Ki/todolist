@@ -1,6 +1,6 @@
 import ReactDOM from 'react-dom/client'
 import {Provider} from "react-redux";
-import {createBrowserRouter, RouterProvider} from "react-router-dom";
+import {createBrowserRouter, Navigate, RouterProvider} from "react-router-dom";
 import App from './App'
 import {store} from "./store/store";
 import TodoListsPage from "./pages/todoListsPage/TodoListsPage";
@@ -15,6 +15,10 @@ const router = createBrowserRouter([
     path: '/',
     element: <App/>,
     children: [
+      {
+        path: '/',
+        element: <Navigate to="addtodo" />,
+      },
       {
         path: 'addtodo',
         element: <AddNewTodoList/>

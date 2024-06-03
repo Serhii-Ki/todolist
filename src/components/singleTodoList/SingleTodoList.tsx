@@ -12,7 +12,7 @@ function SingleTodoList() {
   const todoList = todoLists.find(todoList => todoList.id === params.id);
   return (
       <Box display="flex" justifyContent='center' alignItems="center">
-        <TodoList todoId={params.id} title={todoList.title} filter='all'/>
+        <TodoList todoId={params.id} title={todoList.title} filter={todoList.filter}/>
       </Box>
   );
 }
