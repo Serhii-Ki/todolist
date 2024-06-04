@@ -1,10 +1,9 @@
 import TodoList from "../todoList/TodoList";
 import {useParams} from "react-router-dom";
 import {useSelector} from "react-redux";
+import Box from "@mui/material/Box";
 import {RootStateType} from "../../store/store";
 import {TodoListType} from "../../utils/types";
-import Box from "@mui/material/Box";
-
 
 function SingleTodoList() {
   const params = useParams();

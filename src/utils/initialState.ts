@@ -1,8 +1,8 @@
 import { v4 as uuidv4 } from 'uuid';
 import {TasksType, TodoListType} from "./types";
 
-const firstId: string = uuidv4();
-const secondId: string = uuidv4();
+export const firstId: string = uuidv4();
+export const secondId: string = uuidv4();
 
 export const todoListInitial: TodoListType[] = [
   {
