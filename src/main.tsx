@@ -5,10 +5,8 @@ import App from './App'
 import {store} from "./store/store";
 import TodoListsPage from "./pages/todoListsPage/TodoListsPage";
 import AddNewTodoList from "./pages/addTodoListPage/AddNewTodoList";
-
-import './index.css'
-import TodoList from "./components/todoList/TodoList";
 import SingleTodoList from "./components/singleTodoList/SingleTodoList";
+import './index.css'
 
 const router = createBrowserRouter([
   {
