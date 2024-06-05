@@ -1,10 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import CustomBtn from './CustomBtn';
-import {isAction} from "redux";
 import {useState} from "react";
 
 const meta: Meta<typeof CustomBtn> = {
   component: CustomBtn,
+  parameters: {
+    layout: 'centered'
+  }
 };
 
 export default meta;
