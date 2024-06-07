@@ -14,7 +14,7 @@ function AddNewTodoList() {
   }
 
   return (
-      <Box display='flex' flexDirection='column' justifyItems='center' alignItems='center'>
+      <Box display='flex' flexDirection='column' justifyItems='center' alignItems='center' width='100%'>
         <Typography variant="h2" gutterBottom>
           Add new Todo List
         </Typography>

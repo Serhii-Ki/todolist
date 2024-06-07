@@ -1,8 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import Sidebar from "./Sidebar";
-import {useState} from "react";
-import CustomBtn from "../customBtn/CustomBtn";
-
 
 const meta: Meta<typeof Sidebar> = {
   component: Sidebar,
@@ -14,8 +11,4 @@ const meta: Meta<typeof Sidebar> = {
 export default meta;
 type Story = StoryObj<typeof Sidebar>;
 
-export const SidebarST: Story = {
-  args: {
-
-  }
-};
+export const SidebarST: Story = {};

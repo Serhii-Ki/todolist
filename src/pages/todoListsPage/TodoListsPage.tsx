@@ -6,9 +6,8 @@ import {TodoListType} from "../../utils/types";
 
 function TodoListsPage() {
   const todoLists = useSelector<RootStateType, TodoListType[]>(state => state.todoLists);
-  console.log(todoLists[0].date)
   return (
-    <Box display='flex' gap='60px' flexWrap='wrap'>
+    <Box display='flex' gap='50px' flexWrap='wrap'>
       {todoLists.map(todoList =>
           <TodoList
               key={todoList.id}

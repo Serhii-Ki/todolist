@@ -33,7 +33,7 @@ function App() {
           <Grid item lg={2} sm={4}>
             <Sidebar/>
           </Grid>
-          <Grid item lg={8} sm={6} mt={'30px'} direction="column" justifyContent="center" alignItems="center">
+          <Grid container item lg={8} sm={6} mt={'30px'} direction="column" justifyContent="center" alignItems="center">
             <Outlet/>
           </Grid>
         </Grid>
